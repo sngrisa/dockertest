@@ -14,5 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      name: checkout-code
+      with:
+        fetch-depth: 0
+    - name: Docker Login
+      env:
+        DOCKER_USER: ${{DOCKER_USER}}
+        DOCKER_PASSWORD: ${{DOCKER_PASSWORD}}
+      run: 
+        echo "Iniciando Sesion en Docker Hub"
+        docker login -u ${{DOCKER_USER} -p ${{DOCKER_PASSWORD}} .
+        echo "Cerrando la Sesion en Docker Hub"
+    # - name: Build the Docker image
+    # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
