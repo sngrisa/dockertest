@@ -33,6 +33,7 @@ jobs:
         DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
       run:
          docker build -t $DOCKER_USER/$DOCKER_REPO:1.0.0 .
+         docker build -t $DOCKER_USER/$DOCKER_REPO::latest .
 
     - name: Push Docker Image
       env:
