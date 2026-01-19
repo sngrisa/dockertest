@@ -1,0 +1,28 @@
+name: Docker-Image
+
+on:
+  push:
+    branches: [ "Main" ]
+  pull_request:
+    branches: [ "Main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get Repo Info
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Docker Login en Docker Hub
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: 
+         echo "Iniciando el login en docker hub"
+         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+         echo "Terminando el login en docker hub"
