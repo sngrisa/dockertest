@@ -32,7 +32,7 @@ jobs:
 
     - name: Push Docker Image
       run:
-         docker push $DOCKER_USER/$DOCKER_REPO:2.0.0 .
+         docker push $DOCKER_USER/$DOCKER_REPO:1.0.0 .
 
   
       
