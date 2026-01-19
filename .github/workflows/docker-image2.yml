@@ -26,7 +26,14 @@ jobs:
       run: 
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
-     - name: Build Image
-       run:
+    - name: Build Docker Image
+      run:
          docker build -t $DOCKER_USER/$DOCKER_REPO:1.0.0 .
+
+    - name: BUild Docker Image2
+      run:
+         docker build -t $DOCKER_USER/$DOCKER_REPO:2.0.0 .
+
+  
+      
     
