@@ -27,10 +27,18 @@ jobs:
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
     - name: Build Docker Image
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
       run:
          docker build -t $DOCKER_USER/$DOCKER_REPO:1.0.0 .
 
     - name: Push Docker Image
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
       run:
          docker push $DOCKER_USER/$DOCKER_REPO:1.0.0 .
 
