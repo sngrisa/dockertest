@@ -24,14 +24,17 @@ jobs:
         major_pattern: "major"
         minor_pattern: "minor"
         format: "${major}.${minor}.${patch}-prerelease${increment}"
+      id: version
         
     - name: Docker Login en Docker Hub
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
+        NEW_VERSION: ${{ steps.version.outputs }}
       run: 
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+         echo "New Version $NEW_VERSION" 
 
     - name: Build Docker Image
       env:
