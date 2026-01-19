@@ -18,6 +18,13 @@ jobs:
       with:
         fetch-depth: 0
         
+    - name: Git Semantic Version
+      uses: PaulHatch/semantic-version@v4.0.3
+      with:
+        major_pattern: "major"
+        minor_pattern: "minor"
+        format: "${major}.${minor}.${patch}-prerelease${increment}"
+        
     - name: Docker Login en Docker Hub
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
