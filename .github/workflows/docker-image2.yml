@@ -41,6 +41,7 @@ jobs:
         DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
       run:
          docker push $DOCKER_USER/$DOCKER_REPO:1.0.0
+         docker push $DOCKER_USER/$DOCKER_REPO:latest
 
   
       
