@@ -30,9 +30,9 @@ jobs:
       run:
          docker build -t $DOCKER_USER/$DOCKER_REPO:1.0.0 .
 
-    - name: BUild Docker Image2
+    - name: Push Docker Image
       run:
-         docker build -t $DOCKER_USER/$DOCKER_REPO:2.0.0 .
+         docker push -t $DOCKER_USER/$DOCKER_REPO:2.0.0 .
 
   
       
